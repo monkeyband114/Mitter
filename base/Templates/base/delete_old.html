@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form method="POST"  action="">
+    {% csrf_token %}
+    <p>Are you sure you want to Delete "{{obj}}"?</p>
+    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+    <input type="submit" value="Confirm"/>
+</form>
+
+{% endblock content %}
+
+{% if page == 'login' %}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter Username" />
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="enter password" />
+       
+        <input type="submit" value="Login"/>
+     </form>
+     <p>havent signed up</p>
+     <a href="{% url 'register' %}">Sign Up</a>
+</div>
+
+{% else %}
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Register"/>
+     </form>
+     <p>Already  signed up</p>
+     <a href="{% url 'login' %}">login</a>
+</div>
+{% endif %}
+
+{% endblock content %} 
