@@ -1,11 +1,11 @@
-# starttwitter
+# Mitter
 this is a twiter like aplication developed using the python Django and Django Rest framework 
 # initalize with  a virtual env and runn the migrations 
 
 The first thing to do is to clone the repository:
 
 ```sh
-$ git clone https://github.com/gocardless/sample-django-app.git
+$ git clone https://github.com/mitter/sample-django-app.git
 $ cd sample-django-app
 ```
 
@@ -29,7 +29,7 @@ Once `pip` has finished downloading the dependencies:
 (env)$ cd project
 (env)$ python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/gocardless/`.
+And navigate to `http://127.0.0.1:8000/mitter/`.
 
 In order to test the purchase flows, fill in the account details in
 `project/gc_app/views.py` to match your **SANDBOX** developer credentials.
@@ -38,7 +38,7 @@ In order to test the purchase flows, fill in the account details in
 
 Before you interact with the application, go to GoCardless Sandbox and set up
 the Redirect URI in the Developer settings. To make it work with this
-application, use the value `http://127.0.0.1:8000/gocardless/confirm/`. This is to
+application, use the value `http://127.0.0.1:8000/mitter/confirm/`. This is to
 make sure you are redirected back to your site where the purchase is verified
 after you have made a purchase.
 
@@ -85,7 +85,7 @@ running on, which is 8000.
 (env)$ localtunnel-beta 8000
 => Port 8000 is now publicly accessible from http://5bebd69e5222.v2.localtunnel.com ...
 ```
-Please refer to the [the Webhooks manual](https://sandbox.gocardless.com/docs/python/merchant_tutorial_webhook#receiving-webhooks) for more details.
+
 
 ### Test your Webhooks
 Once you have the app running with `python manage.py runserver` and tunneling
@@ -98,12 +98,12 @@ otherwise it does not work.  There should be a button for sending a test
 webhook. Click that, select `Bill` as the object type and click `Fire webhook`.
 
 The data from Webhook is accessible in the `Webhook` class-based view in
-`project/gc_app/views.py` in the `webhook_data` variable.
+`project/base/views.py` in the `webhook_data` variable.
 
 ## Tests
 
 To run the tests, `cd` into the directory where `manage.py` is:
 ```sh
-(env)$ python manage.py test gc_app
+(env)$ python manage.py test starttwitter
 ```
 
