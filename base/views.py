@@ -10,7 +10,6 @@ from .models import Room, Topic, Message, User
 from .forms import RoomForm, UserForm, MyUserStartForm
 
 
-
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -22,12 +21,12 @@ def loginPage(request):
         try:
             user = User.objects.get(username=username)
         except:
-            messages.error(request, 'user nor dey ')
+            messages.error(request, 'user nor dey')
         
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            login(request, user)
+            login(request, user) 
             return redirect('home')
         else:
             messages.error(request, 'Omo  password not exit')  
